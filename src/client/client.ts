@@ -48,7 +48,7 @@ export const createClient = <R = any>(options?: ClientOptions<R>) => {
           }
         }
 
-        const response = await fetch(endpoint, restOptions);
+        const response = await (options?.customFetch || fetch)(endpoint, restOptions);
 
         const queryResponse = await handleResponseInterceptors(
           action,
